@@ -1,0 +1,12 @@
+PER modificare un ordine devi la richiesta alla seguente API: /API/ordini/modifica.php?id_ordine={id_ordine}&stato_ordine={nuovo_stato_ordine}
+La richiesta deve essere fatta con il metodo PATCH
+è possibile modificare solo lo stato dell'ordine
+
+PER eliminare un ordine devi la richiesta alla seguente API: /API/ordini/elimina.php?id_ordine={id_ordine}
+La richiesta deve essere fatta con il metodo DELETE
+
+PER avere il riepilogo degli ordini devi la richiesta alla seguente API: /API/ordini/riepilogo.php
+La richiesta deve essere fatta con il metodo GET
+
+PER avere i dettagli dell'ordine devi la richiesta alla seguente API: /API/ordini/dettagli.php?id_ordine={id_ordine}
+La richiesta deve essere fatta con il metodo GET
