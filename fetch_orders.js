@@ -19,6 +19,7 @@ async function fetchXURL(url,methodType) {
 
 function admin_view(data){
     let view = document.getElementById('admin_view');
+    view.innerHTML = '';
     data.forEach(ordine => {
         let child = document.createElement('div');
         child.innerHTML = `<p>Nome: ${ordine[2]} Cognome: ${ordine[3]}</p>
@@ -34,6 +35,7 @@ function admin_view(data){
 
 function user_view(data){
     let view = document.getElementById('user_view'); 
+    view.innerHTML = '';
     data.forEach(ordine => {
         let child = document.createElement('div');
         child.innerHTML = `<p>Nome: ${ordine[2]} Cognome: ${ordine[3]}</p>
