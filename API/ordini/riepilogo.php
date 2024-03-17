@@ -25,20 +25,10 @@ if ($ruolo !== 'amministratore') {
   $query .= ' WHERE id_utente = ?';
 }
 
-if(isset($_GET['action']) && isset($_GET['keyword'])){
-  $action = $_GET['action'];
-  $keyword = '%' . $_GET['keyword'] . '%';
-  $query .= " AND {$action} LIKE ?";
-}
-
 $stmt = $conn->prepare($query);
-
+ 
 if ($ruolo !== 'amministratore') {
-  $stmt->bind_param('i', $id_utente);
-}
-
-if(isset($action) && isset($keyword)){
-  $stmt->bind_param('s', $keyword);
+  $stmt->bind_param('s', $id_utente);
 }
 
 $stmt->execute();
@@ -51,10 +41,32 @@ if ($ordini === false || $ordini->num_rows === 0) {
   exit;
 }
 
-$ordini = $ordini->fetch_all();
+$ordini_array = [];
+if ($ruolo !== 'amministratore'){
+  while ($ordine = $ordini->fetch_assoc()) {
+    $id_ordine = $ordine['id_ordine'];
+
+    $query_prodotti = "SELECT nome_prodotto FROM prodotti_ordine WHERE id_ordine = ?";
+    $stmt_prodotti = $conn->prepare($query_prodotti);
+    $stmt_prodotti->bind_param('i', $id_ordine);
+    $stmt_prodotti->execute();
+    $result_prodotti = $stmt_prodotti->get_result();
+
+    $prodotti_array = [];
+    while ($prodotto = $result_prodotti->fetch_assoc()) {
+        $prodotti_array[] = $prodotto['nome_prodotto'];
+    }
+
+    $ordine['prodotti'] = $prodotti_array;
+
+    $ordini_array[] = $ordine;
+  }
+} else{
+  $ordini_array = $ordini->fetch_all();
+}
 
 $stmt->close();
 
-echo json_encode($ordini);
+echo json_encode($ordini_array);
 
 ?>
