@@ -22,13 +22,11 @@ $ruolo = $_SESSION['ruolo'];
 $query = 'SELECT * FROM riepilogo_ordini';
 
 if ($ruolo == 'amministratore') {
-    if (isset($_GET['numero_ordine'])) {
-        $query .= ' WHERE numero_ordine LIKE ?';
-    } elseif (isset($_GET['nome_cliente'])) {
-        $query .= ' WHERE nome_cliente LIKE ?';
+    if (isset($_GET['action'])) {
+        $query .= " WHERE " . $_GET['action'] . " LIKE ?";
     }
 } else {
-    if (isset($_GET['nome_prodotto'])) {
+    if (isset($_GET['action'])) {
         $query = 'SELECT riepilogo_ordini.* FROM riepilogo_ordini 
                   INNER JOIN dettagli_ordini ON riepilogo_ordini.id_ordine = dettagli_ordini.id_ordine 
                   WHERE dettagli_ordini.nome_prodotto LIKE ? AND dettagli_ordini.id_utente = ?';
@@ -38,11 +36,11 @@ if ($ruolo == 'amministratore') {
 $stmt = $conn->prepare($query);
 
 // Esegui la query
-if (isset($_GET['numero_ordine']) || isset($_GET['nome_cliente'])) {
-    $parameter = isset($_GET['numero_ordine']) ? '%' . $_GET['numero_ordine'] . '%' : '%' . $_GET['nome_cliente'] . '%';
+if (isset($_GET['action'])) {
+    $parameter = '%' . $_GET['keyword'] . '%';
     $stmt->bind_param('s', $parameter);
-} elseif (isset($_GET['nome_prodotto'])) {
-    $nome_prodotto = '%' . $_GET['nome_prodotto'] . '%';
+} elseif (isset($_GET['action'])) {
+    $nome_prodotto = '%' . $_GET['keyword'] . '%';
     $stmt->bind_param('si', $nome_prodotto , $id_utente);
 }
 
