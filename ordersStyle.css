@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+h1 {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 20%;
+    font-size: 2.5cqw;
+    font-family: "Inter", sans-serif;
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    height: 3cqw;
+    width: 10%;
+    border-radius: 0.3cqw;
+    box-shadow: #00000050 0px 5px 5px 0px;
+    background-color: #FFB525;
+    border: none;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 1cqw;
+}
+
+.search {
+    height: 2cqw;
+    width: 5%;
+    border-radius: 0.3cqw;
+    box-shadow: #00000050 0px 5px 5px 0px;
+    background-color: #FFB525;
+    border: none;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 1cqw;
+}
+
+body {
+    margin: 2%;
+}
+
+.up {
+    top: 0;
+    position: sticky;
+}
+
+div {
+    border-bottom: solid #00000050 1px;
+}
+
+p {
+    font-size: 1cqw;
+    font-family: "Inter", sans-serif;
+    color: #00000075;
+    margin-left: 3%;
+}
+
+.searchInput {
+    border: solid #00000050 1px;
+    height: 2cqw;
+    width: 15%;
+    border-radius: 0.3cqw;
+    box-shadow: #00000050 0px 5px 5px 0px;
+    font-family: "Inter", sans-serif;
+    font-size: 1cqw;
+}

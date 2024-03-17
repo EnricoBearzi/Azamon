@@ -5,7 +5,7 @@ session_start();
 require_once 'connessione.php';
 
 if (isset($_SESSION['id_utente']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header('Location: home.php');
+  header('Location: index.html');
   exit;
 }
 
@@ -21,9 +21,11 @@ if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['email']) 
   $result = $stmt->get_result()->fetch_row();
   $stmt->close();
 
+  print_r($result);
+
   if ($result[0] > 0) {
     $_SESSION['errore_registrazione'] = 'Email già esistente.';
-    header('Location: registrazione.php');
+    header('Location: index.html');
   } else {
     $stmt = $conn->prepare('INSERT INTO utenti (nome, cognome, email, password) VALUES (?, ?, ?, ?)');
     $stmt->bind_param('ssss', $nome, $cognome, $email, $password);
@@ -31,7 +33,7 @@ if (isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['email']) 
     $stmt->close();
 
     $_SESSION['messaggio_registrazione'] = 'Registrazione avvenuta correttamente. Effettua il login.';
-    header('Location: home.php');
+    header('Location: index.html');
   }
 }
 
