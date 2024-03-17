@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ordersStyle.css">
-    <script src='g.js'></script>
+    <script src='fetch_orders.js'></script>
     <title>orders</title>
   </head>
   <body>
     <h1><button class="back">BACK</button>ORDERS</h1>
 
+    <?php
+      session_start();
+      $ruolo = 'amministratore';
+    ?>
+
     <!-- Per user -->
     <?php if($ruolo !== 'amministratore'): ?>
-      <?php foreach ($ordini as $ordine): ?>
-        <div id='user_view'>
-          <p>Nome: <?php echo $ordine['nome_prodotto']; ?></p>
-          <p>Quantità: <?php echo $ordine['quantita_totale']; ?></p>
-          <p>Prezzo: &euro; <?php echo number_format($ordine['totale_ordine'], 2); ?></p>
-        </div>
-      <?php endforeach; ?>
+      <div id="user_view"></div>
+      <script>
+        fetch_user("/Azamon/API/ordini/riepilogo.php", "GET");
+      </script>
     <?php endif ?>
 
     <!-- Per admin -->
@@ -32,26 +34,13 @@
         <input class="searchInput" type="text" name="keyword" id="keyword" placeholder="Inserisci parola chiave">
         <button class="search" type="submit">Cerca</button>
       </form>
-
-      <?php foreach ($ordini as $ordine): ?>
-        <div id='admin_view'>
-          <p>Cliente: <?php echo $ordine['nome_cliente']." ".$ordine['cognome_cliente']; ?></p>
-          <p id="<?php echo $ordine['id_ordine']; ?>"><?php echo $ordine['numero_ordine']; ?></p>
-          <p>Data: <?php echo $ordine['data_ordine']; ?></p>
-          <p>Stato: <?php echo $ordine['stato_ordine']; ?></p>
-          <p>Quantità: <?php echo $ordine['quantita_totale']; ?></p>
-          <p>Prezzo: &euro; <?php echo number_format($ordine['totale_ordine'], 2); ?></p>
-        </div>
-      <?php endforeach; ?>
+      <div id='admin_view'>
+        
+      </div>
+      <script>
+        fetch_admin("/Azamon/API/ordini/riepilogo.php", "GET");
+      </script>
     <?php endif ?>
 
-    <script>
-      $(document).ready(function() {
-        $("tr").click(function() {
-          var id_ordine = $(this).attr("id");
-          window.location.href = "visualizzaOrdine.php?id_ordine=" + id_ordine;
-        });
-      });
-    </script>
   </body>
 </html>
