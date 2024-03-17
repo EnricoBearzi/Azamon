@@ -1,25 +1,26 @@
 async function fetchXURL(url,methodType) {
-    try {
+    /*try {*/
         const response = await fetch(url, {
             method: methodType,
             credentials: 'same-origin'
         });
-
+/*
         if (!response.ok) {
             throw new Error('Errore nella chiamata API');
         }
-
+*/
         const data = await response.json();
         return data
-    } catch (error) {
+    /*} catch (error) {
         console.error('Errore:', error);
-    }
+    }*/
 }
 
 
 function admin_view(data){
     let view = document.getElementById('admin_view');
     view.innerHTML = '';
+    console.log(data)
     data.forEach(ordine => {
         let child = document.createElement('div');
         child.innerHTML = `<p>Nome: ${ordine[2]} Cognome: ${ordine[3]}</p>

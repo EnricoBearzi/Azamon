@@ -8,7 +8,8 @@
     <title>orders</title>
   </head>
   <body>
-    <h1><button class="back">BACK</button>ORDERS</h1>
+    <!-- LOGOUT -->
+    <h1><button class="back" onclick="location.href = 'logout.php';">BACK</button>ORDERS</h1>
 
     <?php
       session_start();
@@ -19,13 +20,13 @@
     <?php if($ruolo !== 'amministratore'): ?>
       <div id="user_view"></div>
       <script>
-        fetch_user("/Azamon/API/ordini/riepilogo.php", "GET");
+        fetch_user("/azamon/API/ordini/riepilogo.php", "GET");
       </script>
     <?php endif ?>
 
     <!-- Per admin -->
     <?php if($ruolo == 'amministratore'): ?>
-      <form action="riepilogoOrdini.php" method="GET">
+      <form action="/azamon/API/ordini/search.php" method="GET">
         <select class="searchInput" name="action" id="action">
           <option value="numero_ordine">Numero ordine</option>
           <option value="nome_cliente">Nome cliente</option>
@@ -38,7 +39,7 @@
         
       </div>
       <script>
-        fetch_admin("/Azamon/API/ordini/riepilogo.php", "GET");
+        fetch_admin("/azamon/API/ordini/riepilogo.php", "GET");
       </script>
     <?php endif ?>
 
