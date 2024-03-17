@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../connessione.php';
+require_once './connessione.php';
 
 session_start();
 
@@ -51,10 +51,10 @@ if ($ordini === false || $ordini->num_rows === 0) {
   exit;
 }
 
-$ordini = $ordini->fetch_all();
+$ordini = $ordini->fetch_all(MYSQLI_ASSOC);
 
 $stmt->close();
 
-echo json_encode($ordini);
+json_encode($ordini);
 
 ?>
