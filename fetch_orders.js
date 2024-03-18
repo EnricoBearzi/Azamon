@@ -1,19 +1,19 @@
 async function fetchXURL(url,methodType) {
-    /*try {*/
+    try {
         const response = await fetch(url, {
             method: methodType,
             credentials: 'same-origin'
         });
-/*
+
         if (!response.ok) {
             throw new Error('Errore nella chiamata API');
         }
-*/
+
         const data = await response.json();
         return data
-    /*} catch (error) {
+    } catch (error) {
         console.error('Errore:', error);
-    }*/
+    }
 }
 
 
@@ -86,4 +86,18 @@ async function fetch_user(url, methodType){
 async function fetch_dettagli_ordine_admin(url, methodType) {
     let data = await fetchXURL(url, methodType);
     dettagli_ordine_admin_view(data);
+}
+
+async function search_fetch_admin(){
+    var action = document.getElementById('opzioniDiRicerca').value;
+    var keyword = document.getElementById('barraDiRicerca').value;
+    let data = await fetchXURL(`/Azamon/API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
+    admin_view(data);
+}
+
+async function search_fetch_user(){
+    var action = document.getElementById('opzioniDiRicerca').value;
+    var keyword = document.getElementById('barraDiRicerca').value;
+    let data = await fetchXURL(`/Azamon/API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
+    user_view(data);
 }

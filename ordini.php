@@ -14,35 +14,35 @@
 
     <?php
       session_start();
-      $ruolo = 'amministratore';
+      $ruolo = $_SESSION['ruolo'];
+      if ($ruolo === 'amministratore') {
+        $opzioniDiRicerca = array('Numero dell\'ordine','Nome del cliente');
+        $valueDiRicerca = array('numero_ordine','nome_cliente');
+      } else {
+          $opzioniDiRicerca = array('Nome del prodotto');
+      }
     ?>
+    <select id="opzioniDiRicerca">
+    <?php for ($i = 0; $i < count($opzioniDiRicerca); $i++): ?>
+        <option value="<?php echo $valueDiRicerca[$i]; ?>"><?php echo $opzioniDiRicerca[$i]; ?></option>
+    <?php endfor; ?>
+    </select>
+
+    <input type="text" id="barraDiRicerca">
 
     <!-- Per user -->
-    <?php if($ruolo !== 'amministratore'): ?>
-      <div id="user_view" class="nextPage"></div>
-      <script>
-        fetch_user("/azamon/API/ordini/riepilogo.php", "GET").then(function caricaScript(){next()})
-      </script>
-    <?php endif ?>
+    <?php if($ruolo === 'amministratore'){
+      echo '<div id="admin_view" class="nextPage></div>';
+    }else{echo '<div id="user_view" class="nextPage></div>';} 
+    ?>
 
-    <!-- Per admin -->
-    <?php if($ruolo == 'amministratore'): ?>
-      <form action="/azamon/API/ordini/search.php" method="GET">
-        <select class="searchInput" name="action" id="action">
-          <option value="numero_ordine">Numero ordine</option>
-          <option value="nome_cliente">Nome cliente</option>
-          <option value="cognome_cliente">Cognome cliente</option>
-        </select>
-        <input class="searchInput" type="text" name="keyword" id="keyword" placeholder="Inserisci parola chiave">
-        <button class="search" type="submit">Cerca</button>
-      </form>
-      <div id='admin_view' class="nextPage">
-        
-      </div>
-      <script>
-        fetch_admin("/azamon/API/ordini/riepilogo.php", "GET").then(function caricaScript(){next()})
+    <script>
+        fetch_admin("/Azamon/API/ordini/riepilogo.php", "GET");
+        document.getElementById('barraDiRicerca').addEventListener('input', function() {
+            <?php if($ruolo === 'amministratore'){
+              echo 'search_fetch_admin();';
+            }else{'search_fetch_user();';}  ?>
+        });
       </script>
-    <?php endif ?>
-
   </body>
 </html>
