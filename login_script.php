@@ -5,7 +5,7 @@ session_start();
 require_once 'connessione.php';
 
 if (isset($_SESSION['id_utente']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header('Location: index.html');
+  header('Location: index.php');
   exit;
 }
 
@@ -34,7 +34,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
   } else {
     $_SESSION['errore_login'] = 'Email non trovata.';
   }
-  header('Location: index.html');
+  header('Location: index.php');
 }
 
 ?>

@@ -22,6 +22,13 @@
             <hr>
             <p>Don't have an account?</p>
             <button class="signup-btn" onclick="triggerRight()"> Sign Up</button>
+            <?php
+                session_start();
+                if (isset($_SESSION['errore_login'])) {
+                    echo "<p style='color: red;'>" . $_SESSION['errore_login'] . "</p>";
+                    unset($_SESSION['errore_login']);
+                }
+            ?>
         </div>
 
         <div class="hidden register-form-wrapper" id="register-form-wrapper">
@@ -39,6 +46,13 @@
             <hr>
             <p>Have an account?</p>
             <button class="login-btn" onclick="triggerLeft()">Login</button>
+            <?php
+                session_start();
+                if (isset($_SESSION['errore_registrazione'])) {
+                    echo "<p style='color: red;'>" . $_SESSION['errore_registrazione'] . "</p>";
+                    unset($_SESSION['errore_login']);
+                }
+            ?>
         </div>
 
         <button class="login-btn" id="login-start-btn" onclick="loginAnimation()">Login</button>
