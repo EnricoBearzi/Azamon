@@ -1,25 +1,26 @@
 async function fetchXURL(url,methodType) {
-    try {
+    /*try {*/
         const response = await fetch(url, {
             method: methodType,
             credentials: 'same-origin'
         });
-
+/*
         if (!response.ok) {
             throw new Error('Errore nella chiamata API');
         }
-
+*/
         const data = await response.json();
         return data
-    } catch (error) {
+    /*} catch (error) {
         console.error('Errore:', error);
-    }
+    }*/
 }
 
 
 function admin_view(data){
     let view = document.getElementById('admin_view');
     view.innerHTML = '';
+    console.log(data)
     data.forEach(ordine => {
         let child = document.createElement('div');
         child.innerHTML = `<p>Nome: ${ordine[2]} Cognome: ${ordine[3]}</p>
@@ -50,6 +51,7 @@ function user_view(data){
 function dettagli_ordine_admin_view(data) {
     let view = document.getElementById('admin_view');
     view.innerHTML = '';
+    console.log(data)
     let child = document.createElement('div');
     child.innerHTML = `<p>ID ordine: ${data[0][0]}</p>
     <p>ID cliente: ${data[0][1]}</p>
@@ -59,6 +61,28 @@ function dettagli_ordine_admin_view(data) {
     <p>Data e ora: ${data[0][5]}</p>
     <p>Stato: ${data[0][6]}</p>
     <p>Numero ordine: ${data[0][7]}</p>`;
+    view.appendChild(child); 
+        
+    data.forEach(ordine => {
+        let child = document.createElement('div');
+        child.innerHTML = `<p>Nome prodotto: ${ordine[8]}</p>
+        <p>Descrizione prodotto: ${ordine[9]}</p>
+        <p>Prezzo totale: ${ordine[10]}</p>
+        <p>Quantità: ${ordine[11]}</p>`;
+        view.appendChild(child); 
+    });
+}
+
+function dettagli_ordine_user_view(data) {
+    let view = document.getElementById('user_view');
+    view.innerHTML = '';
+    console.log(data)
+    let child = document.createElement('div');
+    child.innerHTML = `<p>ID ordine: ${data[0][0]}</p>
+    <p>Nome cliente: ${data[0][2]}</p>
+    <p>Cognome cliente: ${data[0][3]}</p>
+    <p>Data e ora: ${data[0][5]}</p>
+    <p>Stato: ${data[0][6]}</p>`;
     view.appendChild(child); 
         
     data.forEach(ordine => {
@@ -86,16 +110,7 @@ async function fetch_dettagli_ordine_admin(url, methodType) {
     dettagli_ordine_admin_view(data);
 }
 
-async function search_fetch_admin(){
-    var action = document.getElementById('opzioniDiRicerca').value;
-    var keyword = document.getElementById('barraDiRicerca').value;
-    let data = await fetchXURL(`/Azamon/API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
-    admin_view(data);
-}
-
-async function search_fetch_user(){
-    var action = document.getElementById('opzioniDiRicerca').value;
-    var keyword = document.getElementById('barraDiRicerca').value;
-    let data = await fetchXURL(`/Azamon/API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
-    user_view(data);
+async function fetch_dettagli_ordine_user(url, methodType) {
+    let data = await fetchXURL(url, methodType);
+    dettagli_ordine_user_view(data);
 }

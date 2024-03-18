@@ -27,6 +27,42 @@ h1 {
     font-size: 1cqw;
 }
 
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 18%;
+    height: 3cqw;
+    width: 10%;
+    border-radius: 0.3cqw;
+    box-shadow: #00000050 0px 5px 5px 0px;
+    background-color: #FFB525;
+    border: none;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 1cqw;
+}
+
+.modify {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    height: 3cqw;
+    width: 10%;
+    border-radius: 0.3cqw;
+    box-shadow: #00000050 0px 5px 5px 0px;
+    background-color: #FFB525;
+    border: none;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 1cqw;
+}
+
 .search {
     height: 2cqw;
     width: 5%;

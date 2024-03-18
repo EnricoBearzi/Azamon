@@ -8,7 +8,10 @@
     <title>products</title>
   </head>
   <body>
-    <h1><button class="back" onclick="location.href = 'ordini.php';">BACK</button>PRODUCTS</h1>
+    <h1><button class="back" onclick="location.href = 'ordini.php';">BACK</button>PRODUCTS
+    <button class="delete" onclick="location.href = 'ordini.php';">DELETE</button>
+    <button class="modify" onclick="location.href = 'ordini.php';">MODIFY</button>
+    </h1>
     
     <?php
       session_start();
@@ -28,12 +31,6 @@
         fetch_dettagli_ordine_admin("API/ordini/dettagli.php?id_ordine="+encodeURIComponent(<?php echo $_GET['id_ordine']?>), "GET")
       </script>
     <?php endif ?>
-
-    <!-- Per user e per admin -->
-    <div id="nuovo_id"></div>
-    <script>
-        //chiamata per prendere i prodotti + url immagine da mettere nel db
-    </script>
     
   </body>
 </html>
