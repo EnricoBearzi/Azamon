@@ -57,7 +57,7 @@ h1 {
     font-size: 1cqw;
 }
 
-.search {
+#a {
     height: 2cqw;
     width: 10%;
     border-radius: 0.3cqw;
@@ -89,7 +89,7 @@ p {
     margin-left: 3%;
 }
 
-.searchInput {
+#barraDiRicerca, #opzioniDiRicerca, #modify {
     border: solid #00000050 1px;
     height: 2cqw;
     width: 15%;
@@ -97,4 +97,104 @@ p {
     box-shadow: #00000050 0px 5px 5px 0px;
     font-family: "Inter", sans-serif;
     font-size: 1cqw;
+}
+
+img {
+    width: 7cqw;
+    float: left;
+    padding-right: 2%;
+}
+
+@media only screen and (max-width: 1024px) {
+    p{
+        font-size: 1.5cqw;
+    }
+
+    img {
+        width: 11cqw;
+    }
+
+    #barraDiRicerca, #opzioniDiRicerca, #modify {
+        height: 2.5cqw;
+        font-size: 1.5cqw;
+    }
+
+    button {
+        height: 2.5cqw;
+        font-size: 1.5cqw;
+    }
+    
+}
+
+@media only screen and (max-width: 768px) {
+    p{
+        font-size: 2cqw;
+    }
+
+    img {
+        width: 15cqw;
+    }
+
+    h1{
+        font-size: 3cqw;
+    }
+    
+    #barraDiRicerca, #opzioniDiRicerca, #modify {
+        height: 3cqw;
+        font-size: 2cqw;
+    }
+
+    button {
+        height: 3cqw;
+        font-size: 2cqw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    p{
+        font-size: 2cqw;
+    }
+
+    img {
+        width: 15cqw;
+    }
+    
+    h1{
+        font-size: 3.5cqw;
+    }
+
+    button {
+        height: 3cqw;
+        font-size: 2cqw;
+    }
+    #barraDiRicerca, #opzioniDiRicerca, #modify {
+        height: 3cqw;
+        font-size: 2cqw;
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+    p{
+        font-size: 2.5cqw;
+    }
+
+    h1{
+        font-size: 3.5cqw;
+    }
+
+    img {
+        width: 20cqw;
+    }
+
+    button {
+        height: 3.5cqw;
+        font-size: 2.5cqw;
+    }
+
+    #barraDiRicerca, #opzioniDiRicerca, #modify {
+        height: 3.5cqw;
+        font-size: 2.5cqw;
+    }
+    
 }

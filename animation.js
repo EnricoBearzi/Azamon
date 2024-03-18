@@ -44,7 +44,7 @@ function loginAnimation() {
 
 function signUpAnimation() {
     let logbox = document.getElementById('login-box');
-    if(window.innerWidth > 767){
+    if(window.innerWidth > 861){
         logbox.style.transform = "translateX(116.5%)";
     }
     initAnimation(logbox);

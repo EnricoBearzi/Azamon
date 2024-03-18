@@ -209,7 +209,7 @@ body {
     /* Styles for phones */
     .login-box {
         position: absolute;
-        width: 100vh;
+        width: 100vw;
         height: 35cqh;
         margin: 5% auto auto;
     

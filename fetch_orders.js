@@ -73,11 +73,11 @@ function dettagli_ordine_admin_view(data) {
         
     data.forEach(ordine => {
         let child = document.createElement('div');
-        child.innerHTML = `<p>Nome prodotto: ${ordine[8]}</p>
+        child.innerHTML = `<img src="${ordine[11]}">
+        <p>Nome prodotto: ${ordine[8]}</p>
         <p>Descrizione prodotto: ${ordine[9]}</p>
         <p>Prezzo totale: ${ordine[10]}</p>
-        <p>Quantità: ${ordine[12]}</p>
-        <img src="${ordine[11]}">`;
+        <p>Quantità: ${ordine[12]}</p>`;
         view.appendChild(child); 
     });
 }
@@ -96,11 +96,11 @@ function dettagli_ordine_user_view(data) {
         
     data.forEach(ordine => {
         let child = document.createElement('div');
-        child.innerHTML = `<p>Nome prodotto: ${ordine[8]}</p>
+        child.innerHTML = `<img src="${ordine[11]}">
+        <p>Nome prodotto: ${ordine[8]}</p>
         <p>Descrizione prodotto: ${ordine[9]}</p>
         <p>Prezzo totale: ${ordine[10]}</p>
-        <p>Quantità: ${ordine[12]}</p>
-        <img src="${ordine[11]}">`;
+        <p>Quantità: ${ordine[12]}</p>`;
         view.appendChild(child); 
     });
 }
