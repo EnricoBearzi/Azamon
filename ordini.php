@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ordersStyle.css">
     <script src='fetch_orders.js'></script>
+    <script src='passa.js' defer></script>
     <title>orders</title>
   </head>
   <body>
@@ -18,9 +19,9 @@
 
     <!-- Per user -->
     <?php if($ruolo !== 'amministratore'): ?>
-      <div id="user_view"></div>
+      <div id="user_view" class="nextPage"></div>
       <script>
-        fetch_user("/azamon/API/ordini/riepilogo.php", "GET");
+        fetch_user("/azamon/API/ordini/riepilogo.php", "GET").then(function caricaScript(){next()})
       </script>
     <?php endif ?>
 
@@ -35,11 +36,11 @@
         <input class="searchInput" type="text" name="keyword" id="keyword" placeholder="Inserisci parola chiave">
         <button class="search" type="submit">Cerca</button>
       </form>
-      <div id='admin_view'>
+      <div id='admin_view' class="nextPage">
         
       </div>
       <script>
-        fetch_admin("/azamon/API/ordini/riepilogo.php", "GET");
+        fetch_admin("/azamon/API/ordini/riepilogo.php", "GET").then(function caricaScript(){next()})
       </script>
     <?php endif ?>
 
