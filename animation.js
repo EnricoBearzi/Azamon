@@ -34,7 +34,9 @@ function fadeOutLogForm(){
 
 function loginAnimation() {
     let logbox = document.getElementById('login-box');
-    logbox.style.transform = "translateX(-116.5%)";
+    if(window.innerWidth > 767){
+        logbox.style.transform = "translateX(-116.5%)";
+    }
     initAnimation(logbox);
     
     fadeInLogForm();
@@ -42,7 +44,9 @@ function loginAnimation() {
 
 function signUpAnimation() {
     let logbox = document.getElementById('login-box');
-    logbox.style.transform = "translateX(116.5%)";
+    if(window.innerWidth > 767){
+        logbox.style.transform = "translateX(116.5%)";
+    }
     initAnimation(logbox);
 
     fadeInRegFrom();
@@ -50,7 +54,9 @@ function signUpAnimation() {
 
 function triggerRight(){
     let logbox = document.getElementById('login-box');
-    logbox.style.transform = "translateX(116.5%)";
+    if(window.innerWidth > 767){
+        logbox.style.transform = "translateX(116.5%)";
+    }
 
     fadeOutLogForm();
     fadeInRegFrom();
@@ -58,7 +64,9 @@ function triggerRight(){
 
 function triggerLeft(){
     let logbox = document.getElementById('login-box');
-    logbox.style.transform = "translateX(-116.5%)";
+    if(window.innerWidth > 767){
+        logbox.style.transform = "translateX(-116.5%)";
+    }
 
     fadeOutRegForm();
     fadeInLogForm();

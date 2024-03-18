@@ -202,3 +202,10 @@ body {
         transform: translateX(116.5%);
     }
 }
+
+
+/* Media query for phones */
+@media only screen and (max-width: 767px) {
+    /* Styles for phones */
+    
+}
