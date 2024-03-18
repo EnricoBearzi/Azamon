@@ -207,5 +207,19 @@ body {
 /* Media query for phones */
 @media only screen and (max-width: 767px) {
     /* Styles for phones */
+    .login-box {
+        position: absolute;
+        width: 100vh;
+        height: 35cqh;
+        margin: 5% auto auto;
+    
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     
 }
