@@ -118,14 +118,14 @@ async function fetch_user(url, methodType){
 async function search_fetch_admin(){
     var action = document.getElementById('opzioniDiRicerca').value;
     var keyword = document.getElementById('barraDiRicerca').value;
-    let data = await fetchXURL(`/Azamon/API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
+    let data = await fetchXURL(`API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
     admin_view(data);
 }
 
 async function search_fetch_user(){
     var action = document.getElementById('opzioniDiRicerca').value;
     var keyword = document.getElementById('barraDiRicerca').value;
-    let data = await fetchXURL(`/Azamon/API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
+    let data = await fetchXURL(`API/ordini/search.php?action=${action}&keyword=${keyword}`,'GET');
     user_view(data);
 }
 
