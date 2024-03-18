@@ -14,8 +14,8 @@
             <h2>Login</h2>
             <hr>
             <form action="login_script.php" id="login-form" method="POST">
-                <input type="text" placeholder="e-mail" name="email">
-                <input type="text" placeholder="password" name="password">
+                <input type="email" placeholder="e-mail" name="email">
+                <input type="password" placeholder="password" name="password">
                 <button class="login-btn" type="submit">Login</button>
             </form>
             
@@ -39,15 +39,14 @@
                     <input type="text" placeholder="name" name="nome">
                     <input type="text" placeholder="surname" name="cognome">
                 </div>
-                <input type="text" placeholder="e-mail" name="email">
-                <input type="text" placeholder="password" name="password">
+                <input type="email" placeholder="e-mail" name="email">
+                <input type="password" placeholder="password" name="password">
                 <button class="signup-btn" type="submit">Sign Up</button>
             </form>
             <hr>
             <p>Have an account?</p>
             <button class="login-btn" onclick="triggerLeft()">Login</button>
             <?php
-                session_start();
                 if (isset($_SESSION['errore_registrazione'])) {
                     echo "<p style='color: red;'>" . $_SESSION['errore_registrazione'] . "</p>";
                     unset($_SESSION['errore_login']);
