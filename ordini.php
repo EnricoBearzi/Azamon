@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ordersStyle.css">
     <script src="fetch_orders.js"></script>
-    <script src="passa.js" defer></script>
     <title>orders</title>
   </head>
   <body>
@@ -38,7 +37,11 @@
     <?php endif; ?>
 
     <script>
-      fetch_admin("/Azamon/API/ordini/riepilogo.php", "GET");
+      <?php if ($ruolo === 'amministratore'): ?>
+        fetch_admin("API/ordini/riepilogo.php", "GET");
+      <?php else: ?>
+        fetch_user("API/ordini/riepilogo.php", "GET");
+      <?php endif; ?>
       document.getElementById('barraDiRicerca').addEventListener('input', function() {
         <?php if ($ruolo === 'amministratore'): ?>
           search_fetch_admin();

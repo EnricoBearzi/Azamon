@@ -28,21 +28,29 @@ function admin_view(data){
         <p>Data e ora: ${ordine[5]}</p>
         <p>Stato: ${ordine[6]}</p>
         <p>Quantità: ${ordine[7]}</p>
-        <p>Prezzo totale: ${ordine[8]}</p>
-        <input type="hidden" name="id_ordine" value="${ordine[0]}">`;
+        <p>Prezzo totale: ${ordine[8]}</p>`;
+        child.addEventListener("click", (e)=>{
+            window.location="dettagliOrdine.php?id_ordine="+encodeURIComponent(ordine[0]);
+        })
         view.appendChild(child); 
     });
+
 }
 
 function user_view(data){
     let view = document.getElementById('user_view'); 
     view.innerHTML = '';
+    console.log(data)
     data.forEach(ordine => {
         let child = document.createElement('div');
-        child.innerHTML = `<p>Nome: ${ordine[2]} Cognome: ${ordine[3]}</p>
-        <p>Quantità: ${ordine[7]}</p>
-        <p>Prezzo totale: ${ordine[8]}</p>
-        <input type="hidden" name="id_ordine" value="${ordine[0]}">`;
+        child.innerHTML = `<p>Nome: ${ordine.nome_cliente} Cognome: ${ordine.cognome_cliente}</p>
+        <p>Quantità: ${ordine.quantita_totale}</p>
+        <p>Prodotti: ${ordine.prodotti}</p>
+        <p>Prezzo totale: ${ordine.totale_ordine}</p>`;
+        
+        child.addEventListener("click", (e)=>{
+            window.location="dettagliOrdine.php?id_ordine="+encodeURIComponent(ordine.id_ordine);
+        })
         view.appendChild(child);
     });
 
@@ -68,7 +76,8 @@ function dettagli_ordine_admin_view(data) {
         child.innerHTML = `<p>Nome prodotto: ${ordine[8]}</p>
         <p>Descrizione prodotto: ${ordine[9]}</p>
         <p>Prezzo totale: ${ordine[10]}</p>
-        <p>Quantità: ${ordine[11]}</p>`;
+        <p>Quantità: ${ordine[12]}</p>
+        <img src="${ordine[11]}">`;
         view.appendChild(child); 
     });
 }
@@ -90,7 +99,8 @@ function dettagli_ordine_user_view(data) {
         child.innerHTML = `<p>Nome prodotto: ${ordine[8]}</p>
         <p>Descrizione prodotto: ${ordine[9]}</p>
         <p>Prezzo totale: ${ordine[10]}</p>
-        <p>Quantità: ${ordine[11]}</p>`;
+        <p>Quantità: ${ordine[12]}</p>
+        <img src="${ordine[11]}">`;
         view.appendChild(child); 
     });
 }

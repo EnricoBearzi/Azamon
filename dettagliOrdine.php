@@ -9,9 +9,16 @@
   </head>
   <body>
     <h1><button class="back" onclick="location.href = 'ordini.php';">BACK</button>PRODUCTS
-    <button class="delete" onclick="location.href = 'ordini.php';">DELETE</button>
-    <button class="modify" onclick="location.href = 'ordini.php';">MODIFY</button>
+    <button class="delete" onclick="fetchXURL('API/ordini/elimina.php?id_ordine='+encodeURIComponent(<?php echo $_GET['id_ordine']?>), 'DELETE'); window.location.href = 'ordini.php'">DELETE</button>
     </h1>
+
+    <label for="modify">Change state:</label>
+    <select id="modify" name="modify">
+      <option value="In corso">In corso</option>
+      <option value="Annullato">Annullato</option>
+      <option value="Completato">Completato</option>
+    </select>
+    <button class="modify" onclick="fetchXURL('API/ordini/modifica.php?id_ordine='+encodeURIComponent(<?php echo $_GET['id_ordine']?>)+'&stato_ordine='+encodeURIComponent(document.getElementById('modify').value), 'PATCH'); window.location.href = 'dettagliOrdine.php?id_ordine='+encodeURIComponent(<?php echo $_GET['id_ordine']?>)">MODIFY</button>
     
     <?php
       session_start();
